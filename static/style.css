@@ -1,0 +1,109 @@
+body { 
+    font-family: Arial, sans-serif; 
+    text-align: center; 
+    background: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Espace entre les cartes */
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    width: 300px; /* Largeur fixe pour toutes les cartes */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background: white;
+    min-height: 350px; /* Hauteur minimum pour uniformiser */
+}
+
+.card img {
+    width: 100px;
+    height: auto;
+}
+
+.card p {
+    flex-grow: 1; /* Permet aux paragraphes de s'étirer et aligner les boutons */
+}
+
+.card a {
+    margin-top: auto; /* Place le lien en bas */
+    text-decoration: none;
+    color: blue;
+}
+
+.card a:hover { 
+    text-decoration: underline;
+}
+
+/* Style du formulaire */
+form {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espacement entre l'input et le bouton */
+}
+
+/* Input */
+input[type="text"] {
+    padding: 10px;
+    width: 250px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s ease-in-out;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: #007BFF; /* Bordure bleue au focus */
+}
+
+/* Bouton */
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Légère augmentation au survol */
+}
+
+button:active {
+    transform: scale(0.95); /* Effet d'appui */
+}
+
+/* Alignement du switch de langue à droite */
+.lang-switch {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 16px;
+}
+
+.lang-switch a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.lang-switch a:hover {
+    color: #0056b3;
+}
