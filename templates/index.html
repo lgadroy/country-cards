@@ -5,7 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Country Cards App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        function downloadCard(button) {
+            const card = button.closest('.card');
+            const downloadBtn = card.querySelector('.download-btn');
+            const mapLink = card.querySelector('.map-link');
+    
+            // Cache le bouton télécharger et le lien Google Maps
+            downloadBtn.classList.add('hidden-download');
+            if (mapLink) mapLink.classList.add('hidden-download');
+    
+            html2canvas(card, {
+                useCORS: true,
+                allowTaint: false,
+                backgroundColor: null
+            }).then(canvas => {
+                const link = document.createElement('a');
+                const title = card.querySelector('h2')?.innerText || "carte";
+                link.download = `${title}.png`;
+                link.href = canvas.toDataURL();
+                link.click();
+    
+                // Restaure le bouton et le lien Google Maps
+                downloadBtn.classList.remove('hidden-download');
+                if (mapLink) mapLink.classList.remove('hidden-download');
+            });
+        }
+    </script>    
 </head>
+
 
 <body>
     <div class="lang-switch">
@@ -49,11 +78,22 @@
                     {% endif %}
                 </p>
 
-                <p><a href="{{ country['maps']['googleMaps'] }}" target="_blank">
+                <p><a class="map-link" href="{{ country['maps']['googleMaps'] }}" target="_blank">
                     {% if lang == 'fr' %}Voir sur Google Maps{% else %}View on Google Maps{% endif %}
                 </a></p>
+                <div class="button-container">
+                    <button class="download-btn" onclick="downloadCard(this)">
+                        <img src="{{ url_for('static', filename='download.png') }}" alt="Download" class="icon">
+                        <!-- {% if lang == 'fr' %}Télécharger la carte{% else %}Download Card{% endif %} -->
+                    </button>
+                </div>
             </div>
         {% endfor %}
     </div>
+    <br><br>
+
+    <div class="credits">
+        <p>Made by <strong>Léo Gadroy</strong> | Using RestCountriesAPI (https://restcountries.com) | <a href="https://github.com/lgadroy/country-cards" target="_blank">GitHub</a></p>
+    </div>    
 </body>
 </html>

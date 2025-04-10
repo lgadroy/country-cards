@@ -12,6 +12,7 @@ body {
 }
 
 .card {
+    position: relative;
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 15px;
@@ -106,4 +107,59 @@ button:active {
 
 .lang-switch a:hover {
     color: #0056b3;
+}
+
+.hidden-download {
+    display: none;
+}
+
+/* Alignement du bouton en bas à droite */
+.button-container {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.download-btn {
+    background-color: #007BFF;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.download-btn img.icon {
+    height: 20px;
+    width: auto;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    transition: transform 0.2s ease-in-out;
+}
+
+.download-btn:hover img.icon {
+    transform: scale(1.1);
+}
+
+.credits {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 12px;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.credits p {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.credits a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.credits a:hover {
+    text-decoration: underline;
 }

@@ -8,7 +8,7 @@ API_URL = "https://restcountries.com/v3.1/name/"
 @app.route("/", methods=["GET"])
 def home():
     query = request.args.get("country")
-    lang = request.args.get("lang", "en")  # Default language
+    lang = request.args.get("lang", "en")  # Langue par défaut
     countries = []
 
     if query:
@@ -16,7 +16,7 @@ def home():
         if response.status_code == 200:
             raw_data = response.json()
             for country in raw_data:
-                # Official name changes based on language you choose
+                # Le nom commun et officiel du pays est basé sur la langue choisie
                 if lang == "fr" and 'translations' in country and 'fra' in country['translations']:
                     country['official_name'] = country['translations']['fra']['official']
                     country['name']['common'] = country['translations']['fra']['common']
