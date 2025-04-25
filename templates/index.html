@@ -22,7 +22,7 @@
                 backgroundColor: null
             }).then(canvas => {
                 const link = document.createElement('a');
-                const title = card.querySelector('h2')?.innerText || "carte";
+                const title = card.querySelector('h2')?.innerText.trim() + " - country-cards";
                 link.download = `${title}.png`;
                 link.href = canvas.toDataURL();
                 link.click();
@@ -45,7 +45,7 @@
         {% endif %}
     </div>
 
-    <h1>{% if lang == 'fr' %}Recherche de Pays{% else %}Country Search{% endif %}</h1>
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
     
     <form method="GET">
         <input type="hidden" name="lang" value="{{ lang }}">
@@ -66,7 +66,8 @@
                     {{ country['capital'][0] if country.get('capital') else 'N/A' }}</p>
 
                 <p><b>{% if lang == 'fr' %}Population :{% else %}Population:{% endif %}</b> 
-                    {{ "{:,}".format(country['population']) }}</p>
+                    {{ "{:,}".format(country['population']) }}
+                    {% if lang == 'fr' %}habitants{% else %}people{% endif %}</p>
 
                 <p><b>{% if lang == 'fr' %}Monnaie :{% else %}Currency:{% endif %}</b> 
                     {% if country.get('currencies') %}
@@ -84,7 +85,6 @@
                 <div class="button-container">
                     <button class="download-btn" onclick="downloadCard(this)">
                         <img src="{{ url_for('static', filename='download.png') }}" alt="Download" class="icon">
-                        <!-- {% if lang == 'fr' %}Télécharger la carte{% else %}Download Card{% endif %} -->
                     </button>
                 </div>
             </div>
@@ -93,7 +93,7 @@
     <br><br>
 
     <div class="credits">
-        <p>Made by <strong>Léo Gadroy</strong> | Using RestCountriesAPI (https://restcountries.com) | <a href="https://github.com/lgadroy/country-cards" target="_blank">GitHub</a></p>
+        <p>Made by <strong>Léo Gadroy</strong> | Using REST Countries (https://restcountries.com) | <a href="https://github.com/lgadroy/country-cards" target="_blank">GitHub</a></p>
     </div>    
 </body>
 </html>
