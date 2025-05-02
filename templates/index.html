@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Country Cards App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
         function downloadCard(button) {
@@ -39,11 +40,15 @@
 <body>
     <div class="lang-switch">
         {% if lang == "en" %}
-            <a href="{{ url_for('home', country=request.args.get('country', ''), lang='fr') }}">Switch to French</a>
+            <a href="{{ url_for('home', country=request.args.get('country', ''), lang='fr') }}">
+                <img src="{{ url_for('static', filename='france.png') }}" alt="Français" class="lang-flag">
+            </a>
         {% else %}
-            <a href="{{ url_for('home', country=request.args.get('country', ''), lang='en') }}">Switch to English</a>
+            <a href="{{ url_for('home', country=request.args.get('country', ''), lang='en') }}">
+                <img src="{{ url_for('static', filename='uk.png') }}" alt="English" class="lang-flag">
+            </a>
         {% endif %}
-    </div>
+    </div>    
 
     <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
     

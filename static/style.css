@@ -90,23 +90,32 @@ button:active {
     transform: scale(0.95); /* Effet d'appui */
 }
 
-/* Alignement du switch de langue à droite */
+/* Alignement du switch de langue à droite avec drapeau responsive */
 .lang-switch {
     position: absolute;
     top: 20px;
     right: 20px;
-    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* espace entre plusieurs éléments si besoin */
 }
 
 .lang-switch a {
     text-decoration: none;
-    color: #007BFF;
-    font-weight: bold;
-    transition: color 0.3s ease-in-out;
+    display: inline-block;
 }
 
-.lang-switch a:hover {
-    color: #0056b3;
+.lang-switch img.lang-flag {
+    width: auto;
+    max-width: 48px;
+    height: auto;
+    max-height: 48px;
+    display: block;
+    transition: transform 0.2s ease-in-out;
+}
+
+.lang-switch img.lang-flag:hover {
+    transform: scale(1.1);
 }
 
 .hidden-download {
