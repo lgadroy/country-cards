@@ -54,7 +54,7 @@
     
     <form method="GET">
         <input type="hidden" name="lang" value="{{ lang }}">
-        <input type="text" name="country" placeholder="{% if lang == 'fr' %}Entrez un pays{% else %}Enter a country{% endif %}" required>
+        <input type="text" name="country" placeholder="{% if lang == 'fr' %}Rechercher un pays...{% else %}Find a country...{% endif %}" required>
         <button type="submit">{% if lang == 'fr' %}Rechercher{% else %}Search{% endif %}</button>
     </form>
 
